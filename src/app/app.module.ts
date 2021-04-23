@@ -14,9 +14,11 @@ import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatTableModule } from '@angular/material/table';
 import { MatDividerModule } from '@angular/material/divider';
+import { HomeComponent } from './home/home.component';
+import { CalculatorComponent } from './calculator/calculator.component';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, HomeComponent, CalculatorComponent],
   imports: [
     BrowserModule,
     HttpClientModule,
