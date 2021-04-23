@@ -16,6 +16,15 @@ import { MatTableModule } from '@angular/material/table';
 import { MatDividerModule } from '@angular/material/divider';
 import { HomeComponent } from './home/home.component';
 import { CalculatorComponent } from './calculator/calculator.component';
+import { OKTA_CONFIG, OktaAuthModule } from '@okta/okta-angular';
+import { OktaAuthOptions } from '@okta/okta-auth-js';
+import { environment } from '@environment';
+
+const oktaConfig: OktaAuthOptions = {
+  issuer: `https://${environment.oktaDomain}/oauth2/default`,
+  clientId: `${environment.oktaClientId}`,
+  redirectUri: `${window.location.origin}/callback`,
+};
 
 @NgModule({
   declarations: [AppComponent, HomeComponent, CalculatorComponent],
@@ -32,8 +41,9 @@ import { CalculatorComponent } from './calculator/calculator.component';
     MatTableModule,
     MatDividerModule,
     AppRoutingModule,
+    OktaAuthModule,
   ],
-  providers: [],
+  providers: [{ provide: OKTA_CONFIG, useValue: oktaConfig }],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
